@@ -9,6 +9,8 @@ import { AppStack } from './Stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { useCustomFont } from './hooks/useCustomFont';
 import * as NavigationBar from "expo-navigation-bar";
+import { Provider } from 'react-redux';
+import store from './Store';
 
 NavigationBar.setPositionAsync("absolute");
 NavigationBar.setBackgroundColorAsync("#41414166");
@@ -23,11 +25,13 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <AppStack />
-      </View>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <View style={styles.container}>
+          <AppStack />
+        </View>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

@@ -1,39 +1,44 @@
-import { Text, View } from "react-native"
+import { useMemo } from "react"
+import { View } from "react-native"
 import { Header } from "./components/Header"
 import { homeStyles } from "./home.styles"
 import { VirtualizedList } from "../../shared/components/VirtualizedList"
 import { ExploreList } from "./components/ExploreList"
 import { Trends } from "./components/Trends"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useGetStockListQuery } from "./home.service"
+import { RenderIf } from "../../shared/components/RenderIf"
 
 export const Home = () => {
-    // const [data, setData] = useState([]);
-    // const [trendsObject, setTrendsObject] = useState({})
-    // const [isLoading, setIsLoading] = useState(true)
+    const {
+        isLoading,
+        isFetching,
+        data,
+        error
+    } = useGetStockListQuery();
 
-    // useEffect(() => {
-    //     const get = async () => {
-    //         axios.get('https://api.wallex.ir/v1/otc/markets').then((response) => {
-    //             const rootData = response?.data?.result;
 
-    //             const dt: any = [
-    //                 rootData?.BNBUSDT,
-    //                 rootData?.BTCUSDT,
-    //                 rootData?.ETHUSDT,
-    //                 rootData?.DOGSUSDT,
-    //                 rootData?.PIXELTMN
-    //             ]
+    const exploreData = useMemo(() => {
+        if (isLoading) {
+            return [];
+        }
 
-    //             setData(dt);
-    //             setTrendsObject(rootData)
-    //         }).finally(() => {
-    //             setIsLoading(false)
-    //         })
-    //     }
+        const rootData = data?.result || data
+        return [
+            rootData?.BNBUSDT || rootData?.[0],
+            rootData?.BTCUSDT|| rootData?.[1],
+            rootData?.ETHUSDT|| rootData?.[2],
+            rootData?.DOGSUSDT|| rootData?.[3],
+            rootData?.PIXELTMN|| rootData?.[4]
+        ]
+    }, [data?.result, isLoading])
 
-    //     get();
-    // }, [])
+    const trendsData = useMemo(() => {
+        if(isLoading){
+            return
+        }
+        return data?.result || data;
+    }, [data?.result, isLoading])
+
 
     return <View style={homeStyles.wrapper}>
         <VirtualizedList>
@@ -41,17 +46,15 @@ export const Home = () => {
                 width: '100%',
             }}>
                 <Header />
-                <View style={{
-                    height: 268
-                }}>
-                    {/* {isLoading ? <Text>Loading...</Text> :
-                        <ExploreList data={data} />
-                    } */}
+                <View style={homeStyles.exploreWrapper}>
+                    <RenderIf showLoading condition={isLoading}>
+                        <ExploreList data={exploreData} />
+                    </RenderIf>
                 </View>
                 <View>
-                    {/* {isLoading ? <Text>Loading...</Text> :
-                        <Trends trendsObject={trendsObject} />
-                    } */}
+                    <RenderIf showLoading condition={isLoading}>
+                        <Trends trendsObject={trendsData} />
+                    </RenderIf>
                 </View>
             </View>
         </VirtualizedList>

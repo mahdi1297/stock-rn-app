@@ -1,66 +1,39 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
 import { Home } from "./screens/home/Home";
-import { Dimensions, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { theme } from "./ui/theme/Theme";
-import { grid } from "./ui/styles/gris";
-import { HomeIcon } from "./ui/icons/Home";
-import { ChartIcon } from "./ui/icons/Chart";
+import { CoinDetail } from "./screens/CoinDetail";
+import { COIN_DETAIL_SCREEN, HOME_SCREEN } from "./shared/Constaints/constaints";
+import { BottomBar } from "./shared/components/BottomBar";
+import { windowSize } from "./shared/Utils/WindowSize";
 
 const Stack = createStackNavigator();
 
+const STACK_NAVIGATOR_OPTIONS: StackNavigationOptions = {
+    headerShown: false
+}
+
 export const AppStack = () => {
-    
     return (
         <View
-            style={{
-                flex: 1,
-                width: '100%',
-                minHeight: Dimensions.get('screen').height,
-                backgroundColor: theme.colors.bg
-            }}
+            style={styles.wrapper}
         >
-            <Stack.Navigator screenOptions={{
-                headerShown: false,
-            }}>
-                <Stack.Screen name="Home" component={Home} />
+            <Stack.Navigator screenOptions={STACK_NAVIGATOR_OPTIONS}>
+                <Stack.Screen name={HOME_SCREEN} component={Home} />
+                <Stack.Screen name={COIN_DETAIL_SCREEN} component={CoinDetail} />
             </Stack.Navigator>
-            <View style={[{
-                height: 62,
-                backgroundColor: theme.colors.darkBg,
-                position: 'absolute',
-                bottom: 72,
-                right: 32,
-                borderRadius: 32,
-                justifyContent: 'flex-end'
-            }, grid.row, grid.alignCenter,]}>
-                <View
-                    style={[{
-                        width: 80,
-                        height: 58,
-                        position: 'relative',
-                        top: 1,
-                        right: 3,
-                        borderRadius: 32
-                    }, grid.alignCenter, grid.justifyCenter]}
-                >
-                    <ChartIcon color={theme.colors.gray} size={24} />
-                </View>
-                <View
-                    style={[{
-                        width: 80,
-                        height: 58,
-                        position: 'relative',
-                        top: 1,
-                        backgroundColor: '#2d3338',
-                        right: 3,
-                        borderRadius: 32
-                    }, grid.alignCenter, grid.justifyCenter]}
-                >
-                    <HomeIcon color={theme.colors.primary} size={24} />
-                </View>
-            </View>
+            <BottomBar />
         </View>
     );
 }
+
+
+const { WINDOW_HEIGHT } = windowSize();
+const styles = StyleSheet.create({
+    wrapper: {
+        flex: 1,
+        width: '100%',
+        minHeight: WINDOW_HEIGHT,
+        backgroundColor: theme.colors.bg
+    }
+})

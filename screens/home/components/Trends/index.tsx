@@ -6,27 +6,43 @@ import { useCallback, useMemo } from "react";
 import { trendsStyle } from "./trends.style";
 import { ArrowDownLeftIcon } from "../../../../ui/icons/ArrowDownLeft";
 import { ArrowUpLeftIcon } from "../../../../ui/icons/ArrowUpLeft";
+import { useNavigation } from '@react-navigation/native';
+import { COIN_DETAIL_SCREEN } from "../../../../shared/Constaints/constaints";
 
 export const Trends = ({ trendsObject = {} }: any) => {
+    const navigation: any = useNavigation();
+
+    const navigateToDetailPage = useCallback((coinId: string) => {
+        navigation.navigate(COIN_DETAIL_SCREEN, {
+            id: coinId,
+        });
+
+    }, [navigation])
 
     const renderItem = useCallback(({ item }: any) => {
-        const isNegative = Math.sign(item?.stats?.['24h_ch']) < 0 ? true : false
+        const isNegative = item?.state?.['24_ch'] ?
+            Math.sign(item?.stats?.['24h_ch']) < 0 ? true : false :
+            Math.sign(item?.price_change_percentage_24h) < 0 ? true : false
+
+
+        const assetId = item?.enBaseAsset || item?.id
 
         return <TouchableOpacity
+            onPress={() => navigateToDetailPage(assetId)}
             style={trendsStyle.renderItem}
         >
             <View>
                 <View>
                     <View style={[grid.row, grid.justifyBetween, grid.alignCenter]}>
                         <Text style={trendsStyle.stockNameText}>
-                            {item?.faBaseAsset}
+                            {item?.faBaseAsset || item?.name}
                         </Text>
                         <Image
                             source={{
-                                uri: item?.baseAsset_png_icon
+                                uri: item?.baseAsset_png_icon || item?.image
                             }}
                             style={{
-                                borderRadius:100
+                                borderRadius: 100
                             }}
                             width={25}
                             height={25}
@@ -36,10 +52,10 @@ export const Trends = ({ trendsObject = {} }: any) => {
                         <Text style={[
                             trendsStyle.priceText,
                             {
-                                color: isNegative ? theme.colors.danger :theme.colors.primary,
+                                color: isNegative ? theme.colors.danger : theme.colors.primary,
                             }]
                         }>
-                            {item?.stats?.lastPrice?.toFixed(2)}
+                        {item?.stats?.lastPrice?.toFixed(2) || item?.current_price?.toFixed(1)}
                         </Text>
                         {isNegative ?
                             <ArrowDownLeftIcon color={theme.colors.danger} size={24} />
@@ -50,11 +66,11 @@ export const Trends = ({ trendsObject = {} }: any) => {
             <View>
                 <Text
                     style={trendsStyle.bottomText}
-                >{item?.baseAsset}</Text>
+                >{item?.baseAsset || item?.symbol}</Text>
             </View>
 
         </TouchableOpacity>
-    }, [])
+    }, [navigateToDetailPage])
 
 
     const data = useMemo(() => {

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { theme } from "../../../../ui/theme/Theme";
-import { windowSize } from "../../../../shared/utils/WindowSize";
+import { windowSize } from "../../../../shared/Utils/WindowSize";
 
 const { WINDOW_WIDTH } = windowSize();
 const WRAPPER_WIDTH = WINDOW_WIDTH - 32;

@@ -8,4 +8,7 @@ export const homeStyles = StyleSheet.create({
     paddingTop: theme.distances.space.xl,
     backgroundColor: theme.colors.bg,
   },
+  exploreWrapper:{
+    height: 268
+  }
 });

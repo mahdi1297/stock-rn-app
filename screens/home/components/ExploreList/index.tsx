@@ -1,27 +1,42 @@
-import { FlatList, Text, View } from "react-native"
+import { FlatList, Text, TouchableOpacity, View } from "react-native"
 import { useCallback, useMemo } from "react"
 import { theme } from "../../../../ui/theme/Theme"
 import { exploreListStyle } from "./exploreList.style"
 import { grid } from "../../../../ui/styles/gris"
 import { ArrowDownLeftIcon } from "../../../../ui/icons/ArrowDownLeft"
 import { ArrowUpLeftIcon } from "../../../../ui/icons/ArrowUpLeft"
+import { useNavigation } from '@react-navigation/native';
+import { COIN_DETAIL_SCREEN } from "../../../../shared/Constaints/constaints"
 
 export const ExploreList = ({ data }: { data: any }) => {
     const FIRST_RENDER_ITEM_MARGIN_LEFT = useMemo(() => theme.distances.space.xmd, []);
     const OTHER_RENDER_ITEM_MARGIN_LEFT = useMemo(() => theme.distances.space.xsm, []);
 
+    const navigation: any = useNavigation();
+
+    const navigateToDetailPage = useCallback((coinId: string) => {
+        navigation.navigate(COIN_DETAIL_SCREEN, {
+            id: coinId,
+        });
+
+    }, [navigation])
+
     const renderItem = useCallback(({ index, item }: any) => {
         const isFirst = index === 0;
 
-        const isNegative = Math.sign(item?.stats?.['24h_ch']) < 0 ? true : false
+        const isNegative = item?.state?.['24_ch'] ?
+            Math.sign(item?.stats?.['24h_ch']) < 0 ? true : false :
+            Math.sign(item?.price_change_percentage_24h) < 0 ? true : false
 
         const marginLeft = isFirst ?
             FIRST_RENDER_ITEM_MARGIN_LEFT
             : OTHER_RENDER_ITEM_MARGIN_LEFT;
 
         const backgroundColor = isFirst ? theme.colors.white : 'transparent'
+        const assetId = item?.enBaseAsset || item?.id
 
-        return <View
+        return <TouchableOpacity
+            onPress={() => navigateToDetailPage(assetId)}
             style={[
                 exploreListStyle.renderItemWrapper,
                 {
@@ -33,7 +48,7 @@ export const ExploreList = ({ data }: { data: any }) => {
             <View>
                 <View>
                     <Text style={exploreListStyle.stockNameText}>
-                        {item?.faBaseAsset}
+                        {item?.faBaseAsset || item?.name}
                     </Text>
                 </View>
                 <View style={[exploreListStyle.economicalDetailWrapper, grid.row, grid.justifyBetween]}>
@@ -45,7 +60,7 @@ export const ExploreList = ({ data }: { data: any }) => {
                                     theme.colors.primary),
                         }]
                     }>
-                        {item?.stats?.lastPrice?.toFixed(2)}
+                        {item?.stats?.lastPrice?.toFixed(2) || item?.current_price?.toFixed(1)}
                     </Text>
                     {isNegative ?
                         <ArrowDownLeftIcon color={theme.colors.danger} size={32} />
@@ -62,16 +77,16 @@ export const ExploreList = ({ data }: { data: any }) => {
                             isNegative ? theme.colors.danger :
                                 theme.colors.primary),
                     }]}>
-                    ({item?.stats?.['24h_ch']})
+                    ({item?.stats?.['24h_ch'] || item?.price_change_percentage_24h?.toFixed(2)})
                 </Text>
             </View>
             <View>
                 <Text
                     style={exploreListStyle.bottomText}
-                >{item?.baseAsset}</Text>
+                >{item?.baseAsset || item?.symbol}</Text>
             </View>
-        </View>
-    }, [])
+        </TouchableOpacity>
+    }, [navigateToDetailPage])
 
     return <FlatList
         style={exploreListStyle.list}
