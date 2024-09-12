@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "my-stock",
-    "slug": "my-stock",
+    "slug": "mystock",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,11 +17,28 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#7c8182"
+      },
+      "package": "com.emahdi12971297.mystock"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/iran-yekan-regular.ttf"
+          ]
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8b3d4256-d899-49f2-9e20-cc3bec5dba33"
+      }
+    },
+    "owner": "emahdi12971297"
   }
 }
