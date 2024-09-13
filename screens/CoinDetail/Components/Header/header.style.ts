@@ -20,7 +20,9 @@ export const HeaderStyles = StyleSheet.create({
     priceChangeText:{
         color:theme.colors.white,
         fontSize:theme.fonstSizes.md,
-        fontFamily:"iran-yekan-regular"
+        fontFamily:"iran-yekan-regular",
+        position:'relative',
+        top:-10,
     },
     symbolText:{
         color: theme.colors.darkBg,

@@ -1,17 +1,16 @@
 import { StyleSheet, View } from "react-native"
-import { bodyStyles } from "./body.style"
 import { WebView } from "react-native-webview";
 import { useCallback, useMemo } from "react";
 import { theme } from "../../../../ui/theme/Theme";
 
-export const Body = ({ coinId }: { coinId: string }) => {
+export const Chart = ({ coinId }: { coinId: string }) => {
     const manipulateCoinName = useCallback(() => {
         return `${coinId}USD`
     }, [coinId])
 
-    return <View style={bodyStyles.wrapper}>
+    return <>
         <TradingViewChart coinId={manipulateCoinName()} />
-    </View>
+    </>
 }
 
 const getTradingViewChartHtmlSetup = (coinId: string) => {

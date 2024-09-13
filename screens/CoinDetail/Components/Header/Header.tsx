@@ -25,7 +25,6 @@ export const Header: FC<Props> = ({ name, image, current_price, price_change_per
                     borderRadius: 100
                 }}
             />
-            {/* <Text style={HeaderStyles.symbolText}>{name}</Text> */}
             <Text style={HeaderStyles.priceText}>${current_price}</Text>
 
             <Text style={HeaderStyles.priceChangeText}>
