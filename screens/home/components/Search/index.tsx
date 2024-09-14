@@ -1,16 +1,17 @@
-import { Text,  TouchableOpacity, View } from "react-native"
-import { searchStyles } from "./search.styles"
+import { Text, TouchableOpacity, View } from "react-native"
+import { searchStyles } from "./styles"
 import { grid } from "../../../../ui/styles/gris"
 import { BellIcon } from "../../../../ui/icons/Bell";
 import { SearchIcon } from "../../../../ui/icons/Search";
+import { typographyStyles } from "../../../../ui/styles/typography";
 
 export const Search = () => {
     return <View
-        style={[searchStyles.wrapper, grid.row, grid.justifyBetween]}
+        style={[grid.absolute, searchStyles.wrapper, grid.row, grid.justifyBetween]}
     >
         <View>
             <Text
-                style={searchStyles.title}
+                style={[typographyStyles.sizeLg, typographyStyles.extraBold, searchStyles.title]}
             >
                 فارکس
             </Text>

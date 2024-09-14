@@ -1,5 +1,5 @@
 import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
-import { Home } from "./screens/home/Home";
+import { Home } from "./screens/Home/Home";
 import { StyleSheet, View } from "react-native";
 import { theme } from "./ui/theme/Theme";
 import { CoinDetail } from "./screens/CoinDetail";

@@ -1,21 +1,27 @@
 import './gesture-handler';
+
 import {
-  I18nManager,
-  StyleSheet,
   View
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
 import { theme } from './ui/theme/Theme';
 import { AppStack } from './Stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationController } from './controllers/NavigationBarController';
+import { I18nManagerManager } from './controllers/I18nManagerManager';
+import { globalStyles } from './ui/styles/global';
 import { useCustomFont } from './hooks/useCustomFont';
-import * as NavigationBar from "expo-navigation-bar";
-import { Provider } from 'react-redux';
-import store from './Store';
+import store from './store';
 
-NavigationBar.setPositionAsync("absolute");
-NavigationBar.setBackgroundColorAsync("#41414166");
+function bootstrap() {
+  const navigationController = new NavigationController();
+  const i18nManagerManager = new I18nManagerManager();
 
-I18nManager.forceRTL(true);
+  navigationController.setBgColor(theme.navigation.bgColor)
+  i18nManagerManager.forceRtl();
+}
+
+bootstrap();
 
 export default function App() {
   const [loaded, error] = useCustomFont();
@@ -27,7 +33,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <View style={styles.container}>
+        <View style={globalStyles.appContainer}>
           <AppStack />
         </View>
       </NavigationContainer>
@@ -35,12 +41,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: theme.colors.bg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 30
-  },
-});

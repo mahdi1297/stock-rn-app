@@ -1,6 +1,6 @@
 // useEffect(() => {
 
-import { ActivityIndicator, ActivityIndicatorComponent, Text, View } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 import { ScreenProps } from "../../shared/types/ScreenProps"
 import { VirtualizedList } from "../../shared/components/VirtualizedList";
 import { coinDetailStyles } from "./coinDetail.style";
@@ -21,6 +21,19 @@ export const CoinDetail = (props: ScreenProps) => {
         error
     } = useGetStockByIdQuery({ id: id?.toLowerCase() })
 
+
+
+    // useEffect(() => {
+    //     axios.get('https://pro-api.coinmarketcap.com/v1/content/latest', {
+    //         headers: {
+    //             'X-CMC_PRO_API_KEY': 'f4d3ac72-583c-4ed1-94ed-b7c85f0183c8',
+    //         },
+    //     }).then((response) => {
+    //         console.log(response?.data?.data)
+    //     }).catch((error) => {
+    //         console.log(error?.response.datar)
+    //     })
+    // }, [])
 
     if (isLoading) {
         return <ActivityIndicator />
@@ -48,6 +61,8 @@ export const CoinDetail = (props: ScreenProps) => {
     // const last_updated = data?.market_data?.last_updated
 
     // const markets = data?.tickers
+
+    
 
     return <View style={coinDetailStyles.wrapper}>
         <VirtualizedList>

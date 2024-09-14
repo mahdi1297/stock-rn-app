@@ -3,18 +3,18 @@ import { theme } from "../../../ui/theme/Theme"
 import { grid } from "../../../ui/styles/gris"
 import { ChartIcon } from "../../../ui/icons/Chart"
 import { HomeIcon } from "../../../ui/icons/Home"
-import { bottomBarStyles } from "./bottomBar.styles"
+import { bottomBarStyles } from "./styles"
 
 export const BottomBar = () => {
     return <>
-        <View style={[bottomBarStyles.wrapper, grid.row, grid.alignCenter,]}>
+        <View style={[grid.absolute, bottomBarStyles.wrapper, grid.row, grid.alignCenter, grid.justifyEnd]}>
             <View
-                style={[bottomBarStyles.iconButton, grid.alignCenter, grid.justifyCenter]}
+                style={[grid.relative, bottomBarStyles.iconButton, grid.alignCenter, grid.justifyCenter]}
             >
                 <ChartIcon color={theme.colors.gray} size={24} />
             </View>
             <View
-                style={[bottomBarStyles.activeIconButton, grid.alignCenter, grid.justifyCenter]}
+                style={[grid.relative, bottomBarStyles.activeIconButton, grid.alignCenter, grid.justifyCenter]}
             >
                 <HomeIcon color={theme.colors.primary} size={24} />
             </View>

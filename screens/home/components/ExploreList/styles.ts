@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { theme } from "../../../../ui/theme/Theme";
+import {StyleSheet} from 'react-native';
+import {theme} from '../../../../ui/theme/Theme';
 
 export const exploreListStyle = StyleSheet.create({
   list: {
@@ -14,28 +14,20 @@ export const exploreListStyle = StyleSheet.create({
     paddingHorizontal: theme.distances.space.lg,
   },
   stockNameText: {
-    fontSize: theme.distances.space.xmd,
-    fontFamily: "iran-yekan-regular",
-    color: "#313434",
+    color: theme.colors.grayText2,
     opacity: 0.7,
   },
   economicalDetailWrapper: {
+    width: '100%',
     marginTop: theme.distances.space.xl,
-    width: "100%",
   },
-  priceText: {
-    fontSize: theme.fonstSizes.lg,
-    fontFamily: "iran-yekan-extra-bold",
-    fontWeight: 900,
-  },
+  priceText: {},
   percentageWrapper: {
     marginTop: theme.distances.space.xsm,
   },
   bottomText: {
-    fontSize: theme.fonstSizes.sm,
     marginTop: theme.distances.space.lg,
-    fontFamily: "iran-yekan-regular",
-    color: "#313434",
+    color: theme.colors.grayText2,
     opacity: 0.7,
   },
 });

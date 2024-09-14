@@ -10,13 +10,10 @@ export const searchStyles = StyleSheet.create({
     width: WRAPPER_WIDTH,
     borderBottomWidth: 2,
     borderColor: theme.colors.white,
-    position: "absolute",
     bottom: 0,
   },
   title: {
     height: 65,
-    fontSize: 24,
-    fontFamily: "iran-yekan-extra-bold",
     color: theme.colors.white,
   },
   iconsWrapper: {

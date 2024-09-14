@@ -17,11 +17,5 @@ export const useCustomFont = () => {
         }
     }, [loaded, error]);
 
-    // if (!loaded && !error) {
-    //     return null;
-    // }
-
-
     return [loaded, error]
-
 }

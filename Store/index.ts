@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { homeService } from "../screens/home/home.service";
+import { homeService } from "../screens/Home/home.service";
 import { coinDetailService } from "../screens/CoinDetail/coinDetail.service";
 
 const store = configureStore({

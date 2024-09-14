@@ -1,12 +1,12 @@
 import { useMemo } from "react"
 import { View } from "react-native"
-import { Header } from "./components/Header"
-import { homeStyles } from "./home.styles"
+import { Header } from "./Components/Header"
 import { VirtualizedList } from "../../shared/components/VirtualizedList"
-import { ExploreList } from "./components/ExploreList"
-import { Trends } from "./components/Trends"
-import { useGetStockListQuery } from "./home.service"
+import { ExploreList } from "./Components/ExploreList"
+import { Trends } from "./Components/Trends"
 import { RenderIf } from "../../shared/components/RenderIf"
+import { useGetStockListQuery } from "./home.service"
+import { homeStyles } from "./styles"
 
 export const Home = () => {
     const {

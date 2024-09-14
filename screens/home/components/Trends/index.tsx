@@ -3,11 +3,12 @@ import { grid } from "../../../../ui/styles/gris"
 import { theme } from "../../../../ui/theme/Theme"
 import { ChevronLeftIcon } from "../../../../ui/icons/ChevronLeft";
 import { useCallback, useMemo } from "react";
-import { trendsStyle } from "./trends.style";
+import { trendsStyle } from "./styles";
 import { ArrowDownLeftIcon } from "../../../../ui/icons/ArrowDownLeft";
 import { ArrowUpLeftIcon } from "../../../../ui/icons/ArrowUpLeft";
 import { useNavigation } from '@react-navigation/native';
 import { COIN_DETAIL_SCREEN } from "../../../../shared/Constaints/constaints";
+import { typographyStyles } from "../../../../ui/styles/typography";
 
 export const Trends = ({ trendsObject = {} }: any) => {
     const navigation: any = useNavigation();
@@ -34,7 +35,7 @@ export const Trends = ({ trendsObject = {} }: any) => {
             <View>
                 <View>
                     <View style={[grid.row, grid.justifyBetween, grid.alignCenter]}>
-                        <Text style={trendsStyle.stockNameText}>
+                        <Text style={[typographyStyles.sizeMd, typographyStyles.bold, trendsStyle.stockNameText]}>
                             {item?.faBaseAsset || item?.name}
                         </Text>
                         <Image
@@ -50,12 +51,13 @@ export const Trends = ({ trendsObject = {} }: any) => {
                     </View>
                     <View style={[trendsStyle.economicalDetailWrapper, grid.row, grid.justifyBetween]}>
                         <Text style={[
+                            typographyStyles.sizeMd, typographyStyles.extraBold,
                             trendsStyle.priceText,
                             {
                                 color: isNegative ? theme.colors.danger : theme.colors.primary,
                             }]
                         }>
-                        {item?.stats?.lastPrice?.toFixed(2) || item?.current_price?.toFixed(1)}
+                            {item?.stats?.lastPrice?.toFixed(2) || item?.current_price?.toFixed(1)}
                         </Text>
                         {isNegative ?
                             <ArrowDownLeftIcon color={theme.colors.danger} size={24} />
@@ -65,7 +67,7 @@ export const Trends = ({ trendsObject = {} }: any) => {
             </View>
             <View>
                 <Text
-                    style={trendsStyle.bottomText}
+                    style={[typographyStyles.regualr, typographyStyles.sizeSm, trendsStyle.bottomText]}
                 >{item?.baseAsset || item?.symbol}</Text>
             </View>
 
@@ -104,7 +106,7 @@ export const Trends = ({ trendsObject = {} }: any) => {
     >
         <View style={[grid.row, grid.justifyBetween]}>
             <Text
-                style={trendsStyle.title}
+                style={[typographyStyles.extraBold, typographyStyles.sizeLg, trendsStyle.title]}
             >ترند مارکت</Text>
             <TouchableOpacity>
                 <ChevronLeftIcon color={theme.colors.bg} size={32} />
