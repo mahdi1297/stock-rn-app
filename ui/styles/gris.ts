@@ -2,8 +2,14 @@ import {StyleSheet} from 'react-native';
 import {theme} from '../theme/Theme';
 
 export const grid = StyleSheet.create({
+  fullWidth: {
+    height: '100%',
+  },
   row: {
     flexDirection: 'row',
+  },
+  rowReverse: {
+    flexDirection: 'row-reverse',
   },
   alignCenter: {
     alignItems: 'center',

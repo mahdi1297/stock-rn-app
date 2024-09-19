@@ -52,7 +52,7 @@ export const ExploreList = ({ data }: { data: any }) => {
                         {item?.faBaseAsset || item?.name}
                     </Text>
                 </View>
-                <View style={[exploreListStyle.economicalDetailWrapper, grid.row, grid.justifyBetween]}>
+                <View style={[grid.fullWidth, exploreListStyle.economicalDetailWrapper, grid.row, grid.justifyBetween]}>
                     <Text style={[
                         typographyStyles.sizeLg,
                         typographyStyles.extraBold,

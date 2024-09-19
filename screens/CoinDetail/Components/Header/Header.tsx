@@ -12,8 +12,8 @@ type Props = {
 }
 
 export const Header: FC<Props> = ({ name, image, current_price, price_change_percentage_24h }) => {
-    return <View style={HeaderStyles.wrapper}>
-        <View style={[grid.absolute, HeaderStyles.body, grid.alignCenter, grid.justifyCenter]}>
+    return <View style={[grid.fullWidth, HeaderStyles.wrapper]}>
+        <View style={[grid.fullWidth, grid.absolute, HeaderStyles.body, grid.alignCenter, grid.justifyCenter]}>
             <Image
                 source={{
                     uri: image

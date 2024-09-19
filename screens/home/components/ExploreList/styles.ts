@@ -18,7 +18,6 @@ export const exploreListStyle = StyleSheet.create({
     opacity: 0.7,
   },
   economicalDetailWrapper: {
-    width: '100%',
     marginTop: theme.distances.space.xl,
   },
   priceText: {},

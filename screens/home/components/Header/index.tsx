@@ -4,10 +4,10 @@ import { Search } from "../Search"
 
 export const Header = () => {
     return <View
-        style={[{
-            width: '100%',
-            height: 400,
-        }, grid.alignCenter, grid.justifyCenter]}
+        style={[
+            grid.fullWidth,
+            { height: 400 },
+            grid.alignCenter, grid.justifyCenter]}
     >
         <Text
             style={{

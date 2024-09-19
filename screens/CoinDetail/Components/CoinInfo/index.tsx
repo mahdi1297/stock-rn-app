@@ -6,6 +6,7 @@ import { NumberSlider } from "../NumberSlider"
 import { TableColumn } from "./TableColumn"
 import { MidSpaceTop } from "../../../../shared/components/SpaceTop"
 import { typographyStyles } from "../../../../ui/styles/typography"
+import { grid } from "../../../../ui/styles/gris"
 
 type Props = {
     market_cap_rank: number;
@@ -78,7 +79,7 @@ export const CoinInfo: FC<Props> = ({
     }, [])
 
     return <>
-        <View style={coinInfoStyles.wrapper}>
+        <View style={[grid.fullWidth, coinInfoStyles.wrapper]}>
             <Text style={[typographyStyles.regualr, typographyStyles.sizeLg, coinInfoStyles.coinNameText]}>
                 {name}
             </Text>
@@ -99,7 +100,7 @@ export const CoinInfo: FC<Props> = ({
         ></View>
         <View style={coinInfoStyles.wrapper}>
             <FlatList
-                style={coinInfoStyles.tableWrapper}
+                style={[grid.fullWidth, coinInfoStyles.tableWrapper]}
                 data={tableData}
                 contentContainerStyle={coinInfoStyles.listContainer}
                 renderItem={renderItem}

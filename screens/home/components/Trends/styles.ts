@@ -34,7 +34,6 @@ export const trendsStyle = StyleSheet.create({
   },
   economicalDetailWrapper: {
     marginTop: theme.distances.space.xmd,
-    width: '100%',
   },
   priceText: {
     fontWeight: 500,
@@ -46,7 +45,6 @@ export const trendsStyle = StyleSheet.create({
     marginTop: theme.distances.space.xsm,
     color: theme.colors.grayText2,
     opacity: 0.7,
-    width: '100%',
     textAlign: 'left',
   },
 });

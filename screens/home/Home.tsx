@@ -7,6 +7,7 @@ import { Trends } from "./Components/Trends"
 import { RenderIf } from "../../shared/components/RenderIf"
 import { useGetStockListQuery } from "./home.service"
 import { homeStyles } from "./styles"
+import { grid } from "../../ui/styles/gris"
 
 export const Home = () => {
     const {
@@ -42,9 +43,7 @@ export const Home = () => {
 
     return <View style={homeStyles.wrapper}>
         <VirtualizedList>
-            <View style={{
-                width: '100%',
-            }}>
+            <View style={[grid.fullWidth]}>
                 <Header />
                 <View style={homeStyles.exploreWrapper}>
                     <RenderIf showLoading condition={isLoading}>

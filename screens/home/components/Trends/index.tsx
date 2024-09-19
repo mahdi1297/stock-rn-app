@@ -49,7 +49,7 @@ export const Trends = ({ trendsObject = {} }: any) => {
                             height={25}
                         />
                     </View>
-                    <View style={[trendsStyle.economicalDetailWrapper, grid.row, grid.justifyBetween]}>
+                    <View style={[grid.fullWidth, trendsStyle.economicalDetailWrapper, grid.row, grid.justifyBetween]}>
                         <Text style={[
                             typographyStyles.sizeMd, typographyStyles.extraBold,
                             trendsStyle.priceText,
@@ -67,7 +67,7 @@ export const Trends = ({ trendsObject = {} }: any) => {
             </View>
             <View>
                 <Text
-                    style={[typographyStyles.regualr, typographyStyles.sizeSm, trendsStyle.bottomText]}
+                    style={[grid.fullWidth, typographyStyles.regualr, typographyStyles.sizeSm, trendsStyle.bottomText]}
                 >{item?.baseAsset || item?.symbol}</Text>
             </View>
 

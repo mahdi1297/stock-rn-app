@@ -3,15 +3,16 @@
 import { ActivityIndicator, View } from "react-native"
 import { ScreenProps } from "../../shared/types/ScreenProps"
 import { VirtualizedList } from "../../shared/components/VirtualizedList";
-import { coinDetailStyles } from "./coinDetail.style";
+import { coinDetailStyles } from "./styles";
 import { useGetStockByIdQuery } from './coinDetail.service'
 import { Header } from "./Components/Header/Header";
 import { Chart } from "./Components/Chart";
 import { Body } from "./Components/Body";
 import { CoinInfo } from "./Components/CoinInfo";
+import { grid } from "../../ui/styles/gris";
 
 
-export const CoinDetail = (props: ScreenProps) => {
+export default function CoinDetail(props: ScreenProps) {
     const { id } = props.route.params;
 
     const {
@@ -36,7 +37,9 @@ export const CoinDetail = (props: ScreenProps) => {
     // }, [])
 
     if (isLoading) {
-        return <ActivityIndicator />
+        return <View>
+            <ActivityIndicator />
+        </View>
     }
 
     const market_cap = data?.market_data?.market_cap?.usd;
@@ -62,13 +65,11 @@ export const CoinDetail = (props: ScreenProps) => {
 
     // const markets = data?.tickers
 
-    
+
 
     return <View style={coinDetailStyles.wrapper}>
         <VirtualizedList>
-            <View style={{
-                width: '100%',
-            }}>
+            <View style={[grid.fullWidth]}>
                 <Header
                     name={data?.name}
                     image={data?.image?.large}

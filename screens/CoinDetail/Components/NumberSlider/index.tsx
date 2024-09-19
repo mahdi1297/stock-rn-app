@@ -13,7 +13,7 @@ export const NumberSlider: FC<Props> = ({ label, number, rank }) => {
     const isNegative = rank &&
         Math.sign(rank) < 0 ? true : false
 
-    return <View style={numberSliderStyles.wrapper}>
+    return <View style={[grid.fullWidth, numberSliderStyles.wrapper]}>
         <View style={[grid.row, grid.alignCenter, grid.justifyBetween]}>
             <View style={[numberSliderStyles.numbersWrapper, grid.row, grid.alignCenter, grid.justifyBetween]}>
                 <Text style={numberSliderStyles.mainNumber}>${number?.toLocaleString()}</Text>

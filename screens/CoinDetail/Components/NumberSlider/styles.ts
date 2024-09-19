@@ -4,7 +4,6 @@ import {theme} from '../../../../ui/theme/Theme';
 export const numberSliderStyles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: theme.distances.space.md,
-    width: '100%',
   },
   numbersWrapper: {
     gap: theme.distances.space.sm,

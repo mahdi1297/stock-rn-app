@@ -12,6 +12,7 @@ import { I18nManagerManager } from './controllers/I18nManagerManager';
 import { globalStyles } from './ui/styles/global';
 import { useCustomFont } from './hooks/useCustomFont';
 import store from './store';
+import { createNavigatorTheme } from './helpers/CreateNavigatorTheme';
 
 function bootstrap() {
   const navigationController = new NavigationController();
@@ -22,6 +23,7 @@ function bootstrap() {
 }
 
 bootstrap();
+const navigatorTheme = createNavigatorTheme();
 
 export default function App() {
   const [loaded, error] = useCustomFont();
@@ -32,7 +34,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer theme={navigatorTheme}>
         <View style={globalStyles.appContainer}>
           <AppStack />
         </View>

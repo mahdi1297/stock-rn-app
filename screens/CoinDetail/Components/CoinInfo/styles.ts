@@ -3,7 +3,6 @@ import {theme} from '../../../../ui/theme/Theme';
 
 export const coinInfoStyles = StyleSheet.create({
   wrapper: {
-    width: '100%',
     marginBottom: theme.distances.space.lg,
     paddingHorizontal: theme.distances.space.md,
     direction: 'rtl',
@@ -15,7 +14,6 @@ export const coinInfoStyles = StyleSheet.create({
     textAlign: 'left',
   },
   tableWrapper: {
-    width: '100%',
     maxWidth: '100%',
     marginTop: theme.distances.space.md,
     // paddingTop:theme.distances.space.md,
@@ -23,7 +21,6 @@ export const coinInfoStyles = StyleSheet.create({
     overflow: 'scroll',
   },
   tableRowItemWrapper: {
-    width: '100%',
     borderBottomWidth: 1,
     borderBottomColor: '#ebebeb',
   },

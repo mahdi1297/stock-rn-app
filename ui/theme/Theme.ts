@@ -1,6 +1,6 @@
 export const theme = {
-  navigation:{
-    bgColor:'#41414166'
+  navigation: {
+    bgColor: '#41414166',
   },
   colors: {
     bg: '#7c8182',
@@ -36,7 +36,7 @@ export const theme = {
     xsm: 8,
   },
   fontFamily: {
-    regualr: 'iran-yekan-regualr',
+    regualr: 'iran-yekan-regular',
     extraBold: 'iran-yekan-extra-bold',
     bold: 'iran-yekan-bold',
   },

@@ -3,11 +3,9 @@ import {theme} from '../../../../ui/theme/Theme';
 
 export const HeaderStyles = StyleSheet.create({
   wrapper: {
-    width: '100%',
     height: 300,
   },
   body: {
-    width: '100%',
     height: '100%',
   },
   priceText: {
