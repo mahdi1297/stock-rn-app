@@ -7,8 +7,6 @@ import {
     View
 } from "react-native";
 import { Home } from "./screens/Home/Home";
-import { theme } from "./ui/theme/Theme";
-import { windowSize } from "./shared/Utils/WindowSize";
 import {
     COIN_DETAIL_SCREEN,
     HOME_SCREEN,
@@ -16,6 +14,7 @@ import {
 } from "./shared/Constaints/constaints";
 import { lazy, Suspense } from "react";
 import { grid } from "./ui/styles/gris";
+import { windowSize } from './utils/WindowSize'
 
 const CoinDetail = lazy(() => import('./screens/CoinDetail'))
 const Screener = lazy(() => import('./screens/Screener'))
@@ -27,11 +26,10 @@ const STACK_NAVIGATOR_OPTIONS: StackNavigationOptions = {
     headerShown: false,
 }
 
-
 export const AppStack = () => {
     return (
         <View
-            style={styles.wrapper}
+            style={[grid.fullWidth, styles.wrapper]}
         >
             <Stack.Navigator
                 screenOptions={STACK_NAVIGATOR_OPTIONS}>
@@ -52,6 +50,5 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         minHeight: WINDOW_HEIGHT,
-        ...grid.fullWidth,
     }
 })

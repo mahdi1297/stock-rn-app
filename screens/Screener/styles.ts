@@ -1,12 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../ui/theme/Theme';
-import {windowSize} from '../../shared/Utils/WindowSize';
-
-const getWidth = () => {
-  const {WINDOW_WIDTH} = windowSize();
-
-  return WINDOW_WIDTH - theme.distances.space.md;
-};
+import { getWidth } from '../../helpers/GetWidth';
 
 export const screenerStyles = StyleSheet.create({
   wrapper: {
@@ -15,7 +9,7 @@ export const screenerStyles = StyleSheet.create({
   table: {
     paddingTop: 32,
     paddingLeft: 24,
-    width: getWidth(),
+    width: getWidth(theme.distances.space.md),
     margin: 'auto',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
@@ -24,7 +18,6 @@ export const screenerStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   tableRowItem: {
-    
     width: '100%',
     height: 62,
     borderBottomWidth: 1,

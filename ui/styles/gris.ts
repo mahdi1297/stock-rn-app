@@ -3,7 +3,7 @@ import {theme} from '../theme/Theme';
 
 export const grid = StyleSheet.create({
   fullWidth: {
-    height: '100%',
+    width: '100%',
   },
   row: {
     flexDirection: 'row',

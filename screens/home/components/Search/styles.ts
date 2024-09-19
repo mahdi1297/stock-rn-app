@@ -1,13 +1,10 @@
 import { StyleSheet } from "react-native";
 import { theme } from "../../../../ui/theme/Theme";
-import { windowSize } from "../../../../shared/Utils/WindowSize";
-
-const { WINDOW_WIDTH } = windowSize();
-const WRAPPER_WIDTH = WINDOW_WIDTH - 32;
+import { getWidth } from "../../../../helpers/GetWidth";
 
 export const searchStyles = StyleSheet.create({
   wrapper: {
-    width: WRAPPER_WIDTH,
+    width: getWidth(32) ,
     borderBottomWidth: 2,
     borderColor: theme.colors.white,
     bottom: 0,

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../../../ui/theme/Theme';
-import {windowSize} from '../../../../shared/Utils/WindowSize';
+import {windowSize} from './../../../../utils/WindowSize';
 
 const getWidth = () => {
   const {WINDOW_WIDTH} = windowSize();
