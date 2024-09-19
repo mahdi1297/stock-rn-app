@@ -17,28 +17,7 @@ export const screenerStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.white,
   },
-  tableRowItem: {
-    width: '100%',
-    height: 62,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-    gap: 12,
-    paddingRight: 12,
-    zIndex: 1,
-  },
-  stockImage: {
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: theme.colors.lightGray,
-    padding: 3,
-  },
-  priceText: {
-    color: theme.colors.grayText2,
-  },
-  unitText: {
-    color: theme.colors.grayText1,
-  },
-  priceChange: {},
+ 
   flag: {
     width: 100,
     height: 200,
@@ -49,7 +28,5 @@ export const screenerStyles = StyleSheet.create({
     // elevation: Platform.OS === 'android' ? 100 : 0,
     borderRadius: 2,
   },
-  listFooter: {
-    height: 150,
-  },
+
 });
