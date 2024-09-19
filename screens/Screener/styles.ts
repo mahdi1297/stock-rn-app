@@ -24,6 +24,7 @@ export const screenerStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   tableRowItem: {
+    
     width: '100%',
     height: 62,
     borderBottomWidth: 1,
