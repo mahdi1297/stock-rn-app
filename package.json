@@ -1,0 +1,49 @@
+{
+  "name": "my-stock",
+  "version": "1.0.0",
+  "main": "expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint" : "./node_modules/.bin/eslint"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^14.0.2",
+    "@gorhom/bottom-sheet": "^4.6.4",
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-navigation/native": "^6.1.18",
+    "@react-navigation/native-stack": "^6.11.0",
+    "@react-navigation/stack": "^6.4.1",
+    "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.7",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "eslint-config-airbnb": "^19.0.4",
+    "expo": "~51.0.28",
+    "expo-font": "~12.0.10",
+    "expo-navigation-bar": "~3.0.7",
+    "expo-splash-screen": "~0.27.5",
+    "expo-status-bar": "~1.12.1",
+    "expo-web-browser": "~13.0.3",
+    "js-yaml": "^4.1.0",
+    "react": "18.2.0",
+    "react-native": "0.74.5",
+    "react-native-gesture-handler": "~2.16.1",
+    "react-native-reanimated": "~3.10.1",
+    "react-native-safe-area-context": "4.10.5",
+    "react-native-screens": "^3.31.1",
+    "react-native-skeleton-content": "^1.0.28",
+    "react-native-webview": "13.8.6",
+    "react-redux": "^9.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/node": "20.12.7",
+    "@types/react": "~18.2.45",
+    "gts": "^5.3.1",
+    "husky": "^9.1.6",
+    "typescript": "^5.4.3"
+  },
+  "private": true
+}
