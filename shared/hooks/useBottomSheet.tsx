@@ -1,4 +1,10 @@
-import { FC, ReactNode, useCallback, useMemo, useRef } from "react";
+import {
+    FC,
+    ReactNode,
+    useCallback,
+    useMemo,
+    useRef,
+} from "react";
 import {
     BottomSheetModal,
     BottomSheetView,
@@ -7,14 +13,16 @@ import { BottomSheetBackdrop } from "../components/BottomSheetBackdrop";
 
 
 type Props = {
-    children: ReactNode
+    children: ReactNode;
+    snapPoint?: string[];
+    onClose?: () => void;
 }
 
 export type UseBottomSheet = any
 
 /**
  * @description THis is a hook which indicates a bottom sheet
- * @param {children}  children component which should be open via bottom sheet
+ * @param {children} children component which should be open via bottom sheet
  
  * @returns bottomSheetComponent rendered open bottom sheet component
  * @returns handlePresentModalPress a function which opens bottom sheet
@@ -22,10 +30,10 @@ export type UseBottomSheet = any
  * @returns bottomSheetModalRef  bottom sheet ref
 
  */
-export const useOpenBottomSheet: FC<Props> = ({ children }: {children: ReactNode}) => {
+export const useOpenBottomSheet: FC<Props> = ({ children, snapPoint, onClose }: { children: ReactNode, snapPoint?: string[], onClose?: () => void }) => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
-    const snapPoints = useMemo(() => ['25%', '50%'], []);
+    const snapPoints = useMemo(() => snapPoint || ['25%', '50%'], [snapPoint]);
 
     const handlePresentModalPress = useCallback(() => {
         bottomSheetModalRef.current?.present();
@@ -36,18 +44,22 @@ export const useOpenBottomSheet: FC<Props> = ({ children }: {children: ReactNode
     }, []);
 
     const handleSheetChanges = useCallback((index: number) => {
+        if (index === -1) {
+            onClose && onClose()
+        }
     }, []);
-
 
     const bottomSheetComponent = useMemo(() => {
         return <BottomSheetModal
             ref={bottomSheetModalRef}
             index={1}
             snapPoints={snapPoints}
-            backdropComponent={(props) => <BottomSheetBackdrop
-                {...props}
-                handleCloseModalPress={handleCloseModalPress}
-            />}
+            backdropComponent={(props) =>
+                <BottomSheetBackdrop
+                    {...props}
+                    handleCloseModalPress={handleCloseModalPress}
+                />
+            }
             onChange={handleSheetChanges}
         >
             <BottomSheetView style={{
